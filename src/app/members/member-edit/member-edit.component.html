@@ -1,32 +1,24 @@
-<div class="row" *ngIf="member">
-    <div class="col-4">
-        <h1>Your profile</h1>
-    </div>
-    <div class="col-4">
-        <div class="card">
-            <img src="{{member.photoUrl || './assets/user.png'}}" alt="{{member.knownAs}}" 
-                class="card-img-top img-thumbnail">
-            <div class="card-body">
-                <div>
-                    <strong>Location:</strong>
-                    <p>{{member.city}}, {{member.country}}</p>
-                </div>
-            </div>
-            <div class="card-footer">
-                <button [disabled]="!editForm.dirty" form="editForm" type="submit" class="btn btn-success btn-block">Save Changes</button>
-            </div>
+<h2 class="text-center text-primary">Your Profile</h2>
+<hr>
+<div class="row">
+    <form [formGroup]="updateForm" *ngIf="updateForm" (ngSubmit)="updateForm.valid && updateMember()" autocomplete="off" class="col-6">
+        <app-text-input [formControl]='updateForm.controls["city"]' [label]='"City"'></app-text-input>
+        <app-text-input [formControl]='updateForm.controls["country"]' [label]='"Country"'></app-text-input>
+        <div class="row" *ngIf="validationErrors.length > 0">
+            <ul class="text-danger">
+                <li *ngFor="let error of validationErrors">
+                    {{error}}
+                </li>
+            </ul>
         </div>
-    </div>
-
-    <div class="col-8">
-        <form #editForm="ngForm" id="editForm" (ngSubmit)="updateMember()">
-            <h4 class="mt-2">Location Details: </h4>
-            <div class="form-inline">
-                <label for="city">City: </label>
-                <input [(ngModel)]="member.city" type="text" name="city" class="form-control mx-2">
-                <label for="city">Country: </label>
-                <input [(ngModel)]="member.country" type="text" name="country" class="form-control mx-2">
-            </div>
-        </form>   
+        <div class="margin_button form-group text-center">
+            <button [disabled]='!updateForm.valid' class="btn btn-success mr-2" type="submit">Update</button>
+            <button type="button" class="btn btn-danger mr-2" (click)="cancel()">Cancel</button>
+        </div>
+    </form>
+    <div class="col-6 margin_div">
+        <label class="btn btn-default"><input type="file" (change)="selectFile($event)"></label>
+        <button class="btn btn-success" [disabled]="!selectedFiles" (click)="upload()">Upload</button>
+        <img class="image_member" src="{{this.image || '../../../../assets/user.png'}}" alt="Image">
     </div>
 </div>

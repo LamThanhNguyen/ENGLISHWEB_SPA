@@ -13,3 +13,22 @@
     background-color: #fff;
     border-top: none;
 }
+
+.image_member {
+    height: 300px;
+}
+
+.des_vocabulary {
+    height: 300px;
+    margin: 10px;
+    margin: 0;
+    border: 1px solid #ced4da;
+}
+
+.margin_button {
+    margin-top: 20px;
+}
+
+.margin_div {
+    margin: 20px 0;
+}

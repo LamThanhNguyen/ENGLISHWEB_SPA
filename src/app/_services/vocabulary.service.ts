@@ -27,7 +27,7 @@ export class VocabularyService {
     }
 
     updateVocabulary(vocabulary: Vocabulary) {
-        return this.http.put(this.baseUrl + 'vocabulary/update', vocabulary).pipe(
+        return this.http.put(this.baseUrl + 'vocabulary/update/', vocabulary).pipe(
             map(() => {
 
             })
@@ -39,7 +39,7 @@ export class VocabularyService {
     }
 
     getVocabularyById(Id: number) {
-        return this.http.get<Vocabulary>(this.baseUrl + 'vocabulary/getvocabularybyid' + Id);
+        return this.http.get<Vocabulary>(this.baseUrl + 'vocabulary/getvocabularybyid/' + Id);
     }
 
     getVocabularyByVietName(vietname: string) {

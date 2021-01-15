@@ -63,11 +63,14 @@ export class VocabularyEditComponent implements OnInit {
     }
 
     updateVocabulary() {
-        console.log(this.vocabularyForm.value);
+        this.vocabularyService.updateVocabulary(this.vocabularyForm.value).subscribe((res: any) => {
+            this.router.navigateByUrl('/');
+        });
     }
 
     cancel() {
         this.cancelVocabulary.emit(false);
+        this.router.navigateByUrl('/');
     }
 
     selectFile(event) {
@@ -107,6 +110,9 @@ export class VocabularyEditComponent implements OnInit {
             this.pushFileToStorage(this.currentFileUpload).subscribe(
                 percentage => {
                     this.percentage = Math.round(percentage);
+                    this.authFirebaseService.SignOut().then((res1: any) => {
+
+                    });
                 },
                 error => {
                     console.log(error);

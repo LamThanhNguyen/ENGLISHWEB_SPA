@@ -62,6 +62,7 @@ export class CreateVocabulary implements OnInit {
 
     cancel() {
         this.cancelVocabulary.emit(false);
+        this.router.navigateByUrl('/');
     }
 
     selectFile(event) {
@@ -85,6 +86,9 @@ export class CreateVocabulary implements OnInit {
                     fileUpload.url = downloadURL;
                     fileUpload.name = fileUpload.file.name;
                     this.saveFileData(fileUpload);
+                    this.authFirebaseService.SignOut().then((res1: any) => {
+
+                    });
                 });
             })
         ).subscribe();

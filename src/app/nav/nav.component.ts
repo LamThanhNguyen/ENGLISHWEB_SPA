@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { SocialAuthService } from 'angularx-social-login';
 import { AccountService } from '../_services/account.service';
 
 @Component({
@@ -14,6 +15,7 @@ export class NavComponent implements OnInit {
     constructor(
         public accountService: AccountService,
         private router: Router,
+        private authService: SocialAuthService,
     ) { }
 
     ngOnInit(): void {
@@ -21,7 +23,6 @@ export class NavComponent implements OnInit {
     }
 
     login() {
-        debugger;
         this.accountService.login(this.model).subscribe(() => {
             this.router.navigateByUrl('/');
             console.log("Đăng Nhập Thành Công!");
@@ -32,14 +33,10 @@ export class NavComponent implements OnInit {
 
     logout() {
         this.accountService.logout();
+        if (localStorage.getItem('loginwithgoogle') === "Đang Login Bằng Tài Khoản Google") {
+            this.authService.signOut();
+            localStorage.removeItem('loginwithgoogle');
+        }
         this.router.navigateByUrl('/');
-    }
-
-    signOut() {
-        const auth2 = gapi.auth2.getAuthInstance();
-        auth2.signOut().then(function () {
-            this.router.navigateByUrl('/');
-            console.log('User signed out.');
-        });
     }
 }

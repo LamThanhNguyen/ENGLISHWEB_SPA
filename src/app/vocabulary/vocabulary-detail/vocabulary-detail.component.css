@@ -1,0 +1,45 @@
+.image_vocabulary {
+    width: 400px;
+    height: 300px;
+    margin: 10px 50px;
+}
+
+.word_vocabulary {
+    height: 50px;
+    margin: 10px;
+    border: none;
+    background-color: #ffffff;
+}
+
+.des_vocabulary {
+    height: auto;
+    min-height: 400px;
+    max-height: 2000px;
+    margin: 10px;
+    border: none;
+    background-color: #ffffff;
+    resize: horizontal;
+    overflow: auto;
+}
+
+.btn_back {
+    width: 100px;
+}
+
+.size_text_vietname {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 50px;
+    text-align: center;
+    color: #33abe5
+}
+
+.size_text_des {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 30px;
+    text-align: left;
+    color: #33abe5;
+}
+
+.margin_button {
+    margin-top: 20px;
+}

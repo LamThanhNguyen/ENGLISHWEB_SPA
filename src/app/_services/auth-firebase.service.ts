@@ -62,8 +62,7 @@ export class AuthFirebaseService {
     // Đăng xuất khỏi firebase
     SignOut() {
         return this.firebaseAuth.signOut().then(() => {
-            localStorage.removeItem('user');
-            this.router.navigate(['sign-in']);
+            localStorage.removeItem('admin');
         })
     }
 }

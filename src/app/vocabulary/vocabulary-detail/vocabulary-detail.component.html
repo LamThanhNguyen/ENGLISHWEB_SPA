@@ -1,14 +1,16 @@
 <h2 class="text-center text-primary">Vocabulary Detail</h2>
 <hr>
 <div class="row">
-    <form [formGroup]="vocabularyForm" autocomplete="off" class="row">
+    <form [formGroup]="vocabularyForm" *ngIf="vocabularyForm" autocomplete="off" class="row">
         <div class="col-6">
-            <app-text-input [formControl]='vocabularyForm.controls["vietName"]' [label]='"VietName"'></app-text-input>
-            <app-text-input [formControl]='vocabularyForm.controls["engName"]' [label]='"EngName"'></app-text-input>
-            <app-text-input [formControl]='vocabularyForm.controls["description"]' [label]='"Description"'></app-text-input>
+            <input class="size_text_vietname col-12 row word_vocabulary" readonly type="text" [formControl]='vocabularyForm.controls["vietName"]' label="VietName">
+            <textarea class="size_text_des col-12 row des_vocabulary" readonly type="text" [formControl]='vocabularyForm.controls["description"]' label="Description"></textarea>
         </div>
         <div class="col-6">
             <img class="image_vocabulary" src="{{this.image || '../../../../assets/user.png'}}" alt="Image">
         </div>
     </form>
+    <div class="margin_button form-group text-center">
+        <button type="button" class="btn_back btn btn-secondary mr-2" (click)="cancel()">Back</button>
+    </div>
 </div>

@@ -1,27 +1,25 @@
 <h2 class="text-center text-primary">Update Vocabulary</h2>
 <hr>
 <div class="row">
-    <form [formGroup]="vocabularyForm" (ngSubmit)="vocabularyForm.valid && updateVocabulary()" autocomplete="off" class="row">
-        <div class="col-6">
-            <app-text-input [formControl]='vocabularyForm.controls["vietName"]' [label]='"VietName"'></app-text-input>
-            <app-text-input [formControl]='vocabularyForm.controls["engName"]' [label]='"EngName"'></app-text-input>
-            <app-text-input [formControl]='vocabularyForm.controls["description"]' [label]='"Description"'></app-text-input>
-            <div class="row" *ngIf="validationErrors.length > 0">
-                <ul class="text-danger">
-                    <li *ngFor="let error of validationErrors">
-                        {{error}}
-                    </li>
-                </ul>
-            </div>
+    <form [formGroup]="vocabularyForm" *ngIf="vocabularyForm" (ngSubmit)="vocabularyForm.valid && updateVocabulary()" autocomplete="off" class="col-6">
+        <app-text-input [formControl]='vocabularyForm.controls["vietName"]' [label]='"VietName"'></app-text-input>
+        <app-text-input [formControl]='vocabularyForm.controls["engName"]' [label]='"EngName"'></app-text-input>
+        <textarea class="col-12 row des_vocabulary" [formControl]='vocabularyForm.controls["description"]' label="Description"></textarea>        
+        <div class="row" *ngIf="validationErrors.length > 0">
+            <ul class="text-danger">
+                <li *ngFor="let error of validationErrors">
+                    {{error}}
+                </li>
+            </ul>
         </div>
-        <div class="col-6">
-            <label class="btn btn-default"><input type="file" (change)="selectFile($event)"></label>
-            <button class="btn btn-success" [disabled]="!selectedFiles" (click)="upload()">Upload</button>
-            <img class="image_vocabulary" src="{{this.image || '../../../../assets/user.png'}}" alt="Image">
-        </div>
-        <div class="form-group text-center">
+        <div class="margin_button form-group text-center">
             <button [disabled]='!vocabularyForm.valid' class="btn btn-success mr-2" type="submit">Update</button>
-            <button type="button" class="btn btn-default mr-2" (click)="cancel()">Cancel</button>
+            <button type="button" class="btn btn-danger mr-2" (click)="cancel()">Cancel</button>
         </div>
     </form>
+    <div class="col-6">
+        <label class="btn btn-default"><input type="file" (change)="selectFile($event)"></label>
+        <button class="btn btn-success" [disabled]="!selectedFiles" (click)="upload()">Upload</button>
+        <img class="image_vocabulary" src="{{this.image || '../../../../assets/user.png'}}" alt="Image">
+    </div>
 </div>

@@ -65,6 +65,7 @@ export class RegisterComponent implements OnInit {
     }
 
     register() {
+        debugger;
         const dateOfBirth = this.registerForm.get('dateOfBirth').value;
         const date = new Date(dateOfBirth.year, dateOfBirth.month, dateOfBirth.day);
         this.registerForm.get('dateOfBirth').setValue(date);
@@ -72,13 +73,13 @@ export class RegisterComponent implements OnInit {
             this.router.navigateByUrl('/');
         }, error => {
             this.validationErrors = error;
-        })
-        console.log(this.registerForm.value);
+        });
     }
 
     // Sự kiện cancelRegister đưa ra giá trị false.
     cancel() {
         this.cancelRegister.emit(false);
+        this.router.navigateByUrl('/');
     }
 
     selectFile(event) {
@@ -103,6 +104,9 @@ export class RegisterComponent implements OnInit {
                     fileUpload.url = downloadURL;
                     fileUpload.name = fileUpload.file.name;
                     this.saveFileData(fileUpload);
+                    this.authFirebaseService.SignOut().then((res1: any) => {
+
+                    });
                 });
             })
         ).subscribe();

@@ -16,9 +16,9 @@ import { environment } from '../environments/environment';
 import { FormUploadComponent } from './upload/form-upload/form-upload.component';
 import { ListUploadComponent } from './upload/list-upload/list-upload.component';
 import { DetailsUploadComponent } from './upload/details-upload/details-upload.component';
-import { ShowGrammarComponent } from './grammar/show-grammar/show-grammar.component';
+import { GrammarListComponent } from './grammar/grammar-list/grammar-list.component';
 import { VocabularyListComponent } from './vocabulary/vocabulary-list/vocabulary-list.component';
-import { ShowPracticeComponent } from './practice/show-practice/show-practice.component';
+import { PracticeListComponent } from './practice/practice-list/practice-list.component';
 import { NavComponent } from './nav/nav.component';
 import { RegisterComponent } from './register/register.component';
 import { TextInputComponent } from './_forms/text-input/text-input.component';
@@ -45,13 +45,13 @@ const googleLoginOptions = {
     ListUploadComponent,
     DetailsUploadComponent,
     NavComponent,
-    ShowGrammarComponent,
+    GrammarListComponent,
     CreateVocabulary,
     VocabularyListComponent,
     VocabularyCardComponent,
     VocabularyDetailComponent,
     VocabularyEditComponent,
-    ShowPracticeComponent,
+    PracticeListComponent,
     RegisterComponent,
     TextInputComponent,
     DateInputComponent,

@@ -1,5 +1,8 @@
+<div class="row btn_create" *ngIf="accountService.currentUser$ | async">
+    <button *appHasRole='["Admin"]' routerLink='vocabulary/add' class="btn btn-create">Create</button>
+</div>
 <div class="row">
-    <div *ngFor="let vocabulary of vocabularies" class="col-2">
+    <div *ngFor="let vocabulary of vocabularies" class="col-3">
         <vocabulary-card [vocabulary]="vocabulary"></vocabulary-card>
     </div>
 </div>

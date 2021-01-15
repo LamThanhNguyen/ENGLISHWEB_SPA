@@ -1,19 +1,18 @@
-<div class="card mb-4" routerLink='/vocabulary/edit/{{vocabulary.id}}'>
+<div class="card mb-4" routerLink='/vocabulary/detail/{{vocabulary.id}}'>
     <div class="card-img-wrapper">
-        <img src="{{vocabulary.image || './assets/user.png'}}" alt="Image" class="card-img-top">
-        <ul class="list-inline member-icons animate text-center">
-            <li class="list-inline-item"><button routerLink='vocabulary/edit/{{vocabulary.id}}' class="btn btn-primary">
-                <i class="fa fa-user"></i></button></li>
+        <img src="{{vocabulary.image || './assets/user.png'}}" alt="Image" class="card-img-top size_image">
+        <ul class="list_vocabulary list-inline member-icons animate text-center">
+            <li *ngIf="accountService.currentUser$ | async" class="list-inline-item"><button *appHasRole='["Admin"]' routerLink='vocabulary/edit/{{vocabulary.id}}' class="btn btn-primary">
+                <i class="fa fa-edit"></i></button></li>
             <li class="list-inline-item"><button routerLink='/vocabulary/detail/{{vocabulary.id}}' class="btn btn-primary">
-                <i class="fa fa-heart"></i></button></li>
-            <li class="list-inline-item"><button (click)="deleteVocabulary(vocabulary.id)" class="btn btn-primary">
-                <i class="fa fa-heart"></i></button></li>
+                <i class="fa fa-info-circle"></i></button></li>
+            <li *ngIf="accountService.currentUser$ | async" class="list-inline-item"><button *appHasRole='["Admin"]' (click)="deleteVocabulary(vocabulary.id)" class="btn btn-primary">
+                <i class="fa fa-trash-alt"></i></button></li>
         </ul>
     </div>
     <div class="card-body p-1">
-        <h6 class="card-title text-center mb-1">
+        <h6 class="size_text card-title text-center mb-1">
             {{vocabulary.engName}}
         </h6>
-        <p class="card-text text-muted text-center">ABC</p>
     </div>
 </div>

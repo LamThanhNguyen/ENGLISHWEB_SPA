@@ -1,0 +1,22 @@
+.image_vocabulary {
+    height: 300px;
+}
+
+.des_vocabulary {
+    height: 300px;
+    margin: 10px;
+    margin: 0;
+    border: 1px solid #ced4da;
+}
+
+.btn_create {
+    margin: 20px;
+}
+
+.btn_upload {
+    margin: 20px;
+}
+
+.margin_button {
+    margin-top: 20px;
+}

@@ -27,12 +27,12 @@
         </div>
         <div class="form-group text-center">
             <button [disabled]='!registerForm.valid' class="btn btn-success mr-2" type="submit">Register</button>
-            <button type="button" class="btn btn-default mr-2" (click)="cancel()">Cancel</button>
+            <button type="button" class="btn btn-danger mr-2" (click)="cancel()">Cancel</button>
         </div>
     </form>
     <div class="col-6">
+        <img class="image_register" src="{{this.image || '../../../../assets/user.png'}}" alt="Image">
         <label class="btn btn-default"><input type="file" (change)="selectFile($event)"></label>
         <button class="btn btn-success" [disabled]="!selectedFiles" (click)="upload()">Upload</button>
-        <img class="image_register" src="{{this.image || '../../../../assets/user.png'}}" alt="Image">
     </div>
 </div>

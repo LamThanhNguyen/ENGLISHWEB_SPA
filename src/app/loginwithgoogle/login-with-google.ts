@@ -25,7 +25,6 @@ export class LoginWithGoogleComponent implements OnInit {
             if (user !== null) {
                 this.user = user;
                 this.loggedIn = true;
-                console.log(user);
                 const useregister = {
                     username: user.email,
                     password: 'Lam' + user.id,
@@ -34,20 +33,21 @@ export class LoginWithGoogleComponent implements OnInit {
                     photoUrl: user.photoUrl
                 };
                 this.accountService.register(useregister).subscribe(() => {
-                    console.log("Đăng ký thành công!");
                     const userlogin = {
                         username : useregister.username,
                         password : useregister.password,
                     }
-                    this.accountService.login(userlogin).subscribe(() => {
+                    this.accountService.login(userlogin).subscribe((response: any) => {
+                        localStorage.setItem('loginwithgoogle', "Đang Login Bằng Tài Khoản Google");
                         this.router.navigateByUrl('/');
-                        console.log("Đăng Nhập Thành Công!");
                     }, error1 => {
                         console.log(error1);
                     });
                 }, error => {
                     console.log(error);
                 });
+            } else {
+                this.loggedIn = false;
             }
         })
     }

@@ -3,9 +3,10 @@ import { Pagination } from 'src/app/_models/pagination';
 import { Vocabulary } from 'src/app/_models/vocabulary';
 import { PaginationParams } from 'src/app/_models/paginationParams';
 import { VocabularyService } from 'src/app/_services/vocabulary.service';
+import { AccountService } from 'src/app/_services/account.service';
 
 @Component({
-    selector: 'show-vocabulary',
+    selector: 'vocabulary-list',
     templateUrl: './vocabulary-list.component.html',
     styleUrls: ['./vocabulary-list.component.css']
 })
@@ -15,9 +16,10 @@ export class VocabularyListComponent implements OnInit {
     pagination: Pagination;
     vocabularyParams: PaginationParams = new PaginationParams();
 
-    constructor(private vocabularyService: VocabularyService) {
-
-    }
+    constructor(
+        public accountService: AccountService,
+        private vocabularyService: VocabularyService,
+    ) { }
 
     ngOnInit(): void {
         this.loadVocabularies();

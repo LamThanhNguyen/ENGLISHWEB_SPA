@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { AccountService } from 'src/app/_services/account.service';
 import { VocabularyService } from 'src/app/_services/vocabulary.service';
 import { Vocabulary } from '../../_models/vocabulary';
 
@@ -13,6 +14,7 @@ export class VocabularyCardComponent implements OnInit {
     @Input() vocabulary: Vocabulary;
 
     constructor(
+        public accountService: AccountService,
         private vocabularyService: VocabularyService,
         private router: Router,
     ) {}

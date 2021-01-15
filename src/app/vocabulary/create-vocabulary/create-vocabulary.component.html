@@ -2,9 +2,9 @@
 <hr>
 <div class="row">
     <form [formGroup]="vocabularyForm" (ngSubmit)="vocabularyForm.valid && createVocabulary()" autocomplete="off" class="col-6">
-        <app-text-input [formControl]='vocabularyForm.controls["vietName"]' [label]='"VietName"'></app-text-input>
-        <app-text-input [formControl]='vocabularyForm.controls["engName"]' [label]='"EngName"'></app-text-input>
-        <app-text-input [formControl]='vocabularyForm.controls["description"]' [label]='"Description"'></app-text-input>
+        <app-text-input class="word_vocabulary" [formControl]='vocabularyForm.controls["vietName"]' [label]='"VietName"'></app-text-input>
+        <app-text-input class="word_vocabulary" [formControl]='vocabularyForm.controls["engName"]' [label]='"EngName"'></app-text-input>
+        <textarea class="col-12 row des_vocabulary" placeholder="Description" [formControl]='vocabularyForm.controls["description"]'></textarea>
         <div class="row" *ngIf="validationErrors.length > 0">
             <ul class="text-danger">
                 <li *ngFor="let error of validationErrors">
@@ -12,14 +12,14 @@
                 </li>
             </ul>
         </div>
-        <div class="form-group text-center">
-            <button [disabled]='!vocabularyForm.valid' class="btn btn-success mr-2" type="submit">Create</button>
-            <button type="button" class="btn btn-default mr-2" (click)="cancel()">Cancel</button>
+        <div class="margin_button form-group text-center">
+            <button [disabled]='!vocabularyForm.valid' class="btn_create btn btn-success mr-2" type="submit">Create</button>
+            <button type="button" class="btn btn-danger mr-2" (click)="cancel()">Cancel</button>
         </div>
     </form>
     <div class="col-6">
-        <label class="btn btn-default"><input type="file" (change)="selectFile($event)"></label>
-        <button class="btn btn-success" [disabled]="!selectedFiles" (click)="upload()">Upload</button>
         <img class="image_vocabulary" src="{{this.image || '../../../../assets/user.png'}}" alt="Image">
+        <label class="btn btn-default"><input type="file" (change)="selectFile($event)"></label>
+        <button class="btn_upload btn btn-success" [disabled]="!selectedFiles" (click)="upload()">Upload</button>
     </div>
 </div>

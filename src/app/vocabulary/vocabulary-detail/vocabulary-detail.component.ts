@@ -36,11 +36,14 @@ export class VocabularyDetailComponent implements OnInit {
             this.vocabularyForm = this.fb.group({
                 id: [response.id, Validators.required],
                 vietName: [response.vietName, Validators.required],
-                engName: [response.engName, Validators.required],
                 image: [response.image],
                 description: [response.description, Validators.required]
             });
             this.image = this.vocabularyForm.get('image').value;
         });
+    }
+
+    cancel() {
+        this.router.navigateByUrl('/');
     }
 }
